@@ -1,0 +1,85 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+factoial.exe -- emu8086 assembler version: 4.08  
+ 
+[ 14-05-2021  --  23:12:24 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .8086
+[   2]        :                                       .model small
+[   3]        :                                       .stack 100
+[   4]        :                                       .data
+[   5]    0070: 04                                    a db 04h
+[   6]    0071: 00 00                                 result dw ?
+[   7]        :                                       FACTORIAL macro
+[   8]        :                                       mov al,a
+[   9]        :                                       mov ch,00
+[  10]        :                                       mov ah,00
+[  11]        :                                       mov cl,a
+[  12]        :                                       dec cl
+[  13]        :                                       back: mul cx
+[  14]        :                                       dec cl
+[  15]        :                                       jnz back
+[  16]        :                                       endm
+[  17]        :                                       .code
+[  18]    0080:                                       start:
+[  19]    0080: B8 07 00                              mov ax,@data
+[  20]    0083: 8E D8                                 mov ds,ax
+[  21]    0085: A0 00 00 B5 00 B4 00 8A 0E 00 00 FE   FACTORIAL
+                C9 F7 E1 FE C9 75 FA                
+[  22]    0098: A3 01 00                              mov result,ax
+[  23]    009B: CC                                    int 03h
+[  24]    009C: B4 4C                                 mov ah,4ch
+[  25]    009E: CD 21                                 int 21h
+[  26]        :                                       end start
+[  27]        :                                       
+[  28]        :                                       
+[  29]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: A0      -   bytes on last page (l.byte)
+0003: 00      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 64      -   SP - stack pointer (l.byte)
+0011: 00      -   SP - stack pointer (h.byte)
+0012: E1      -   check sum (l.byte)
+0013: 38      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 08      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 08      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

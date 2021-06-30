@@ -1,0 +1,29 @@
+< THE SYMBOL TABLE >  expt5.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+NUM                      	00000     	1         	VAR       	data      
+NUM1                     	00001     	1         	VAR       	data      
+NUM2                     	00002     	1         	VAR       	data      
+NUM3                     	00003     	1         	VAR       	data      
+RES                      	00004     	1         	VAR       	data      
+RES1                     	00005     	1         	VAR       	data      
+RES2                     	00006     	1         	VAR       	data      
+RESULT                   	00007     	1         	VAR       	data      
+MSG2                     	00008     	1         	VAR       	data      
+MSG3                     	00035     	1         	VAR       	data      
+MSG4                     	00062     	1         	VAR       	data      
+MSG5                     	0008D     	1         	VAR       	data      
+MSG1                     	000B8     	1         	VAR       	data      
+CODE                     	0000D     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	code      
+NEXT                     	0003A     	-1        	LABEL     	code      
+NEXT1                    	00060     	-1        	LABEL     	code      
+NEXT2                    	00079     	-1        	LABEL     	code      
+BACK                     	00089     	-1        	LABEL     	code      
+EXIT                     	0009A     	-1        	LABEL     	code      
+===================================================================================================
+[ 23-04-2021  --  13:00:50 ] 
+< END >
+ 

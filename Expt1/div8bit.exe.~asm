@@ -1,0 +1,21 @@
+.8086
+.model small
+.data
+num1 db 28h
+num2 db 02h
+result dw ?
+a db 28h
+b db 02h
+c dw ?
+.code
+start:
+mov ax,data
+mov ds,ax
+mov ax,0000h
+mov bx,0000h
+mov al,num1
+div num2
+mov result,ax
+int 21h
+end start
+

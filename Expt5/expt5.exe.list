@@ -1,0 +1,153 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+expt5.exe -- emu8086 assembler version: 4.08  
+ 
+[ 23-04-2021  --  13:00:50 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .8086
+[   2]        :                                       .model small
+[   3]        :                                       .data
+[   4]    0000: 37                                    num db 37h
+[   5]    0001: 35                                    num1 db 35h
+[   6]    0002: 22                                    num2 db 22h
+[   7]    0003: 35                                    num3 db 35h
+[   8]    0004: 00                                    res db ?
+[   9]    0005: 00                                    res1 db ?
+[  10]    0006: 00                                    res2 db ?
+[  11]    0007: 00                                    result db ?
+[  12]    0008: 6F 70 74 69 6F 6E 20 31 3A 20 41 73   msg2 db 'option 1: Ascii to BCD [ascii value is 37 ] $'
+                63 69 69 20 74 6F 20 42 43 44 20 5B 
+                61 73 63 69 69 20 76 61 6C 75 65 20 
+                69 73 20 33 37 20 5D 20 24          
+[  13]    0035: 6F 70 74 69 6F 6E 20 32 3A 20 42 43   msg3 db 'option 2: BCD to Ascii [ascii value is 35 ] $'
+                44 20 74 6F 20 41 73 63 69 69 20 5B 
+                61 73 63 69 69 20 76 61 6C 75 65 20 
+                69 73 20 33 35 20 5D 20 24          
+[  14]    0062: 6F 70 74 69 6F 6E 20 33 3A 20 48 65   msg4 db 'option 3: Hex to BCD [ascii value is 22 ] $'
+                78 20 74 6F 20 42 43 44 20 5B 61 73 
+                63 69 69 20 76 61 6C 75 65 20 69 73 
+                20 32 32 20 5D 20 24                
+[  15]    008D: 6F 70 74 69 6F 6E 20 34 3A 20 42 43   msg5 db 'option 4: BCD to Hex [ascii value is 35 ] $'
+                44 20 74 6F 20 48 65 78 20 5B 61 73 
+                63 69 69 20 76 61 6C 75 65 20 69 73 
+                20 33 35 20 5D 20 24                
+[  16]    00B8: 45 6E 74 65 72 20 6F 70 74 69 6F 6E   msg1 db 'Enter option $'
+                20 24                               
+[  17]        :                                       .code
+[  18]    00D0:                                       Start:
+[  19]    00D0: B8 00 00                              mov ax,@data
+[  20]    00D3: 8E D8                                 mov ds, ax
+[  21]    00D5: BA 08 00                              lea dx,msg2
+[  22]    00D8: B4 09                                 mov ah,09h
+[  23]    00DA: CD 21                                 int 21h
+[  24]    00DC: BA 35 00                              lea dx,msg3
+[  25]    00DF: B4 09                                 mov ah,09h
+[  26]    00E1: CD 21                                 int 21h
+[  27]    00E3: BA 62 00                              lea dx,msg4
+[  28]    00E6: B4 09                                 mov ah,09h
+[  29]    00E8: CD 21                                 int 21h
+[  30]    00EA: BA 8D 00                              lea dx,msg5
+[  31]    00ED: B4 09                                 mov ah,09h
+[  32]    00EF: CD 21                                 int 21h
+[  33]    00F1: BA B8 00                              lea dx,msg1
+[  34]    00F4: B4 09                                 mov ah,09h
+[  35]    00F6: CD 21                                 int 21h
+[  36]    00F8: B4 08                                 mov ah,08h
+[  37]    00FA: CD 21                                 int 21h
+[  38]    00FC: 3C 31                                 cmp al,31h
+[  39]    00FE: 75 D0                                 jnz next
+[  40]        :                                       ;AsciiToBCD
+[  41]    0100: A0 00 00                              mov al, num
+[  42]    0103: 2C 30                                 sub al, 30h
+[  43]    0105: A2 04 00                              mov res ,al
+[  44]    0108: EB 60                                 jmp exit
+[  45]    010A: 3C 32                                 next :cmp al,32h
+[  46]    010C: 75 22                                 jnz next1
+[  47]        :                                       ;BCDtoAscii
+[  48]    010E: A0 01 00                              mov al,num1
+[  49]    0111: 24 F0                                 and al,0F0h
+[  50]    0113: D0 C8 D0 C8 D0 C8 D0 C8               ror al, 4
+[  51]    011B: 04 30                                 add al,30h
+[  52]    011D: 8A 1E 01 00                           mov bl,num1
+[  53]    0121: 80 E3 0F                              and bl,0Fh
+[  54]    0124: 80 C3 30                              add bl,30h
+[  55]    0127: A2 05 00                              mov res1, al
+[  56]    012A: 88 1E 06 00                           mov res2, bl
+[  57]    012E: EB 3A                                 jmp exit
+[  58]    0130: 3C 33                                 next1:cmp al,33h
+[  59]    0132: 75 15                                 jnz next2
+[  60]        :                                       ;HextoDEC
+[  61]    0134: A0 02 00                              mov al,num2
+[  62]    0137: B4 00                                 mov ah,00h
+[  63]    0139: B3 0A                                 mov bl,0Ah
+[  64]    013B: F6 F3                                 div bl
+[  65]    013D: D0 C8 D0 C8 D0 C8 D0 C8               ror al,04h
+[  66]    0145: 02 C4                                 add al,ah
+[  67]    0147: EB 21                                 jmp exit
+[  68]    0149: 3C 34                                 next2:cmp al,34h
+[  69]        :                                       ;BCDtoHEX
+[  70]    014B: A0 03 00                              mov al,num3
+[  71]    014E: B2 00                                 mov dl,00h
+[  72]    0150: 8A D8                                 mov bl,al
+[  73]    0152: 80 E3 F0                              and bl, 0F0h
+[  74]    0155: B1 04                                 mov cl,04h
+[  75]    0157: D2 CB                                 ror bl,cl
+[  76]    0159: 80 C2 0A                              back: add dl, 0Ah
+[  77]    015C: FE CB                                 dec bl
+[  78]    015E: 75 F9                                 jnz back
+[  79]    0160: 24 0F                                 and al,0Fh
+[  80]    0162: 02 D0                                 add dl, al
+[  81]    0164: 88 16 07 00                           mov result ,dl
+[  82]    0168: EB 00                                 jmp exit
+[  83]    016A: CC                                    exit:int 3h
+[  84]        :                                       end start
+[  85]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 6B      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 00      -   SP - stack pointer (h.byte)
+0012: 1E      -   check sum (l.byte)
+0013: 09      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 0D      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 0D      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

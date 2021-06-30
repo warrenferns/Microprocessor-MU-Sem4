@@ -1,0 +1,17 @@
+< THE SYMBOL TABLE >  EvenOdd.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+ARR                      	00000     	1         	VAR       	data      
+EC                       	00005     	1         	VAR       	data      
+OC                       	00006     	1         	VAR       	data      
+CODE                     	00001     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	code      
+BACK                     	0000A     	-1        	LABEL     	code      
+ODD                      	00016     	-1        	LABEL     	code      
+DOWN                     	0001A     	-1        	LABEL     	code      
+===================================================================================================
+[ 25-03-2021  --  09:28:21 ] 
+< END >
+ 

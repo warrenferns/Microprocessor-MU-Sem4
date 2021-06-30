@@ -1,0 +1,18 @@
+< THE SYMBOL TABLE >  proc.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00007     	-5        	SEGMENT   	(ITSELF)  
+L                        	00000     	1         	VAR       	data      
+B                        	00001     	1         	VAR       	data      
+AS                       	00002     	2         	VAR       	data      
+AR                       	00004     	2         	VAR       	data      
+CODE                     	00008     	-5        	SEGMENT   	(ITSELF)  
+ARECT                    	00000     	-1        	NEAR      	code      
+ASQ                      	0000A     	-1        	NEAR      	code      
+START                    	00014     	-1        	LABEL     	code      
+===================================================================================================
+[ 14-05-2021  --  23:04:55 ] 
+< END >
+ 
